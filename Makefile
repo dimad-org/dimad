@@ -2,7 +2,7 @@ FCOMP = gfortran
 FCFLAGS = -g -O2 -std=legacy -Wl,-L/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib/ -Wl,-L$(CONDA_PREFIX)/lib -lgfortran
 # LDFLAGS = -lm -L
 PROGRAM = dimad
-SRCS = dimad_09272022.f
+SRCS = dimad.f
 OBJECTS = $(SRCS:.f=.o)
 MACOSX_DEPLOYMENT_TARGET=14.0
 
