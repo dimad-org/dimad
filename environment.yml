@@ -1,0 +1,7 @@
+# mamba env create -f environment.yml
+name: dimad
+channels:
+  - conda-forge
+dependencies:
+  - fortran-compiler
+  - make
