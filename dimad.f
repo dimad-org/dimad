@@ -2546,14 +2546,13 @@ C     **************************
 C         THE FOLLOWING ROUTINE IS TO BE INTRODUCED WHEN THE COMPUTER
 C         IS A VAX
 C     ******************
-c      FUNCTION CLOCK1(I)
-C     ******************
-c      INTEGER CLOCK1
-c      Y=SECNDS(0.0)
-c      Y=Y*200.0
-c      CLOCK1=ABS(INT(Y))
-c      RETURN
-c      END
+       FUNCTION CLOCK1(I)
+       INTEGER CLOCK1
+       Y=SECNDS(0.0)
+       Y=Y*200.0
+       CLOCK1=ABS(INT(Y))
+       RETURN
+       END
 C     **************************
 C         THE FOLLOWING ROUTINE IS TO BE INTRODUCED WHEN THE COMPUTER
 C         IS An IBM
@@ -2581,14 +2580,14 @@ C      END
 C     ******************
 C         THE FOLLOWING ROUTINE IS TO BE INTRODUCED WHEN THE COMPUTER
 C         IS A VAX  RUNNING WITH UNIX
-       FUNCTION CLOCK1(I)
+C      FUNCTION CLOCK1(I)
 C     ******************
-       IMPLICIT INTEGER (T)
-       EXTERNAL TIME
-       INTEGER CLOCK1
-       CLOCK1=TIME()
-       RETURN
-       END
+C      IMPLICIT INTEGER (T)
+C      EXTERNAL TIME
+C      INTEGER CLOCK1
+C      CLOCK1=TIME()
+C      RETURN
+C      END
 C     ******************
 C         THE FOLLOWING ROUTINE IS TO BE INTRODUCED WHEN THE COMPUTER
 C         IS A HP  RUNNING WITH UNIX
@@ -20658,7 +20657,7 @@ C    SAVE EXPONENTIAL FOR FURTHER IDENTICAL REQUESTS
       N=-1
   300 CONTINUE
       N=N+1
-      PIR=PIR*urand(isynsd)
+C     PIR=PIR*urand(isynsd)
       IF(PIR.GT.EXPMA) GO TO 300
   999 CONTINUE
       RETURN
