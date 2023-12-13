@@ -2546,13 +2546,14 @@ C     **************************
 C         THE FOLLOWING ROUTINE IS TO BE INTRODUCED WHEN THE COMPUTER
 C         IS A VAX
 C     ******************
-       FUNCTION CLOCK1(I)
-       INTEGER CLOCK1
-       Y=SECNDS(0.0)
-       Y=Y*200.0
-       CLOCK1=ABS(INT(Y))
-       RETURN
-       END
+c      FUNCTION CLOCK1(I)
+C     ******************
+c      INTEGER CLOCK1
+c      Y=SECNDS(0.0)
+c      Y=Y*200.0
+c      CLOCK1=ABS(INT(Y))
+c      RETURN
+c      END
 C     **************************
 C         THE FOLLOWING ROUTINE IS TO BE INTRODUCED WHEN THE COMPUTER
 C         IS An IBM
@@ -2569,37 +2570,37 @@ C     **************************
 C         THE FOLLOWING ROUTINE IS TO BE INTRODUCED WHEN THE COMPUTER
 C         IS A SUN
 C     ******************
-C      FUNCTION CLOCK1(I)
+       FUNCTION CLOCK1(I)
 C     ******************
-C      INTEGER CLOCK1
-C      INTEGER TIME
-C      IT=TIME()
-C      CLOCK1=IT
-C      RETURN
-C      END
+       INTEGER CLOCK1
+       INTEGER TIME
+       IT=TIME()
+       CLOCK1=IT
+       RETURN
+       END
 C     ******************
 C         THE FOLLOWING ROUTINE IS TO BE INTRODUCED WHEN THE COMPUTER
 C         IS A VAX  RUNNING WITH UNIX
-C      FUNCTION CLOCK1(I)
-C     ******************
-C      IMPLICIT INTEGER (T)
-C      EXTERNAL TIME
-C      INTEGER CLOCK1
-C      CLOCK1=TIME()
-C      RETURN
-C      END
+c       FUNCTION CLOCK1(I)
+cC     ******************
+c       IMPLICIT INTEGER (T)
+c       EXTERNAL TIME
+c       INTEGER CLOCK1
+c       CLOCK1=TIME()
+c       RETURN
+c       END
 C     ******************
 C         THE FOLLOWING ROUTINE IS TO BE INTRODUCED WHEN THE COMPUTER
 C         IS A HP  RUNNING WITH UNIX
-*     FUNCTION CLOCK1(I)
-C     ******************
-*     integer clock1
-*     integer*4 ia(3)
-*     jf=ftime(ia)
-*     CLOCK1=ia(1)
-*     RETURN
-*     END
-
+c      FUNCTION CLOCK1(I)
+cC     ******************
+c      integer clock1
+c      integer*4 ia(3)
+c      jf=ftime(ia)
+c      CLOCK1=ia(1)
+c      RETURN
+c      END
+c
 C***********************************************
       SUBROUTINE CMAP(A,B,BMAT,CMAT,GAMMA,BETA,index,itflg)
 C
@@ -20638,6 +20639,7 @@ C        WHERE FACT(N) STANDS FOR FACTORIAL OF N
 C    ON RETURN IERROR.EQ.0 NORMALLY
 C              IERROR.EQ.1 IF AMU.LE.0.
 C
+      implicit double precision (a-h,o-z)
       COMMON/CSEEDS/ISEED,IXG,IXS,IXMSTP,IMSD,IMOSTP,ISYNSD,ISYSTP,
      >ISDBEG,IBGSTP,IXES,IXESTP,IESBEG,IESTBG,isdcol
       DATA AMUOL/-1./
@@ -20657,7 +20659,7 @@ C    SAVE EXPONENTIAL FOR FURTHER IDENTICAL REQUESTS
       N=-1
   300 CONTINUE
       N=N+1
-C     PIR=PIR*urand(isynsd)
+      PIR=PIR*urand(isynsd)
       IF(PIR.GT.EXPMA) GO TO 300
   999 CONTINUE
       RETURN
@@ -29232,35 +29234,35 @@ C        THE FOLLOWING IS A REASONABLE PORTABLE GENERATOR
 C        IF YOU HAVE ANY DOUBTS ABOUT IT CAN BE REPLACED
 C        BY ONE OF THE FOLLOWING AS THE CASE MAY BE
 ccC  **********************
-cc      FUNCTION URAND(IX)
+      FUNCTION URAND(IX)
 ccC  **********************
-cc      IMPLICIT REAL*8(A-H,O-Z)
-cc      DATA M2/0/,ITWO/2/
-cc      IF(M2.NE.0)GOTO 20
-ccC     M2=262144
-cc      M2=524288
-cc      HALFM=DFLOAT(M2)
-cc      IA=8*IDINT(HALFM*DATAN(1.0D0)/8.0D0) + 5
-cc      IC=2*IDINT(HALFM*(0.5D0-DSQRT(3.0D0)/6.0D0))+1
-cc      M=M2*ITWO
-cc   20 IX=MOD(IX,M)
-cc      IX=IX*IA+IC
-cc      IX=MOD(IX,M)
-cc      IF(IX.LT.0.0D0)IX=IX+M
-cc      URAND=DFLOAT(IX)/M
-cc      RETURN
-cc      END
+      IMPLICIT REAL*8(A-H,O-Z)
+      DATA M2/0/,ITWO/2/
+      IF(M2.NE.0)GOTO 20
+C     M2=262144
+      M2=524288
+      HALFM=DFLOAT(M2)
+      IA=8*IDINT(HALFM*DATAN(1.0D0)/8.0D0) + 5
+      IC=2*IDINT(HALFM*(0.5D0-DSQRT(3.0D0)/6.0D0))+1
+      M=M2*ITWO
+   20 IX=MOD(IX,M)
+      IX=IX*IA+IC
+      IX=MOD(IX,M)
+      IF(IX.LT.0.0D0)IX=IX+M
+      URAND=DFLOAT(IX)/M
+      RETURN
+      END
 C        THE FOLLOWING FUNCTION SHOULD BE USED FOR THE VAX COMPUTER
 C        using "some" unix system and Decstation under Ultrix
 C  **********************
-       FUNCTION URAND(IX)
-C  **********************
-       IMPLICIT REAL*8(A-H,O-Z)
-       real fr,ran
-       fr=ran(ix)
-       URAND=fr
-       RETURN
-       END
+c
+cC  **********************
+c       IMPLICIT REAL*8(A-H,O-Z)
+c       real fr,ran
+c       fr=ran(ix)
+c       URAND=fr
+c       RETURN
+c       END
 C        THE FOLLOWING FUNCTION SHOULD BE USED FOR THE VAX COMPUTER
 C  **********************
 c      FUNCTION URAND(IX)
@@ -31174,4 +31176,5 @@ C
 C     LAST CARD OF SUBROUTINE QRSOLV.
 C
       END
+
 
